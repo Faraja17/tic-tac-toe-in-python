@@ -6,7 +6,7 @@ Descripton: This is a modification and extension of the game presented as practi
 
 - [Overview](#overview)
   - [My Code](#my-code)
-  - [Links](#links)
+  - [Link(s) to Live Site](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
