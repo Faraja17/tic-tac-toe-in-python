@@ -17,7 +17,7 @@ Descripton: This is a modification and extension of the game presented as practi
 
 ## Overview
 
-I selected Sweigart's model to begin with because I like his logic and his clean concise code. He guided me through setting up a grid by creating a library, setting up the printed board through a function, and allowing players to enter moves using a for in loop that iterates 9 times, regardless of a winner. My job is to write functions to determine and announce the winner and to end the game in the case of a winner. I am also interested in adding a human vs. computer option and eventually translating this game into JavaScript so that I can connect it to HTML and CSS to make it interactive.
+I selected Sweigart's model to begin with because I like his logic and his clean concise code. He guided me through setting up a grid by creating a dictionary, setting up the printed board through a function, and allowing players to enter moves using a for in loop that iterates 9 times, regardless of a winner. My job is to write functions to determine and announce the winner and to end the game in the case of a winner. I am also interested in adding a human vs. computer option and eventually translating this game into JavaScript so that I can connect it to HTML and CSS to make it interactive.
 
 
 ### My Code
