@@ -34,9 +34,9 @@ for i in range(9):
         if (k[0] == move[0] and theBoard[k] == turn): 
             firstLetterCount+=1       
         if firstLetterCount == 3: 
-            print(' ')
-            print(turn + ' wins!') 
             printBoard(theBoard)
+            print(turn + ' wins!')
+            print(' ')
             exit()
         else:
             continue  
@@ -45,23 +45,23 @@ for i in range(9):
         if (k[1] == move[1] and theBoard[k] == turn):
             secondLetterCount+=1
         if secondLetterCount == 3:
-            print(' ')
-            print(turn + ' wins!') 
             printBoard(theBoard)
+            print(turn + ' wins!')
+            print(' ')
             exit()
         else:
             continue
     
     if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
-        print(' ')
-        print(turn + ' wins!') 
         printBoard(theBoard)
+        print(turn + ' wins!')
+        print(' ')
         exit()
 
-    if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn):
-        print(' ')
-        print(turn + ' wins!') 
+    if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
         printBoard(theBoard)
+        print(turn + ' wins!')
+        print(' ')
         exit()
 
     if turn == 'X':
@@ -71,3 +71,4 @@ for i in range(9):
     
 printBoard(theBoard)
 print('It is a draw!')
+print(' ')
