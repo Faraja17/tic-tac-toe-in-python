@@ -19,11 +19,8 @@ def printBoard(board):
     print('~~~~~')
     print(' ')
    
-turn = 'X'
-
-
-
 # players enter moves
+turn = 'X'
 for i in range(9):
     printBoard(theBoard)
     print(turn + ', it is your turn. Select a spot.')
@@ -53,6 +50,16 @@ for i in range(9):
         else:
             continue
     
+    if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
+        print(turn + ' wins!') 
+        printBoard(theBoard)
+        exit()
+
+    if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn):
+        print(turn + ' wins!') 
+        printBoard(theBoard)
+        exit()
+
     if turn == 'X':
         turn = 'O'
     else:
