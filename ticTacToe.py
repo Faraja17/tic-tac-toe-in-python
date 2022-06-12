@@ -31,7 +31,7 @@ for i in range(9):
     firstLetterCount = 0
     secondLetterCount = 0
     for k in theBoard.keys():
-        if (k[0] == move[0] and theBoard[k] == turn): 
+        if (k[0] == move[0]) and (theBoard[k] == turn): 
             firstLetterCount+=1       
         if firstLetterCount == 3: 
             printBoard(theBoard)
@@ -42,7 +42,7 @@ for i in range(9):
             continue  
 
     for k in theBoard.keys():
-        if (k[1] == move[1] and theBoard[k] == turn):
+        if (k[1] == move[1]) and (theBoard[k] == turn):
             secondLetterCount+=1
         if secondLetterCount == 3:
             printBoard(theBoard)
