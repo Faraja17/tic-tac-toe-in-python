@@ -33,18 +33,47 @@ def printBoard(board):
     print('~~~~~')
     print(' ')
    
-# players enter moves
 turn = 'X'
+
+
+
+# players enter moves
 for i in range(9):
+    flag = False
     printBoard(theBoard)
     print(turn + ', it is your turn. Select a spot.')
     move = input()
     theBoard[move] = turn
+
+    # determinine and announce winner
+    firstLetterCount = 0
+    secondLetterCount = 0
+    for k in theBoard.keys():
+        if (k[0] == move[0] and theBoard[k] == turn): 
+            firstLetterCount+=1       
+        if firstLetterCount == 3: 
+            flag = True
+            print(turn + ' wins!') 
+            printBoard(theBoard)
+            exit()
+        else:
+            continue  
+
+    for k in theBoard.keys():
+        if (k[1] == move[1] and theBoard[k] == turn):
+            secondLetterCount+=1
+        if secondLetterCount == 3:
+            flag = True
+            print(turn + ' wins!') 
+            printBoard(theBoard)
+            exit()
+        else:
+            continue
+    
     if turn == 'X':
         turn = 'O'
     else:
         turn = 'X'
-print('It is a draw!')
-
-printBoard(theBoard)
     
+printBoard(theBoard)
+print('It is a draw!')
