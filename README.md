@@ -162,7 +162,7 @@ Finally, I needed to exit both the inner loop and the outer loop so that the gam
 
 ### Continued development
 
-My next project is to translate this game into JavaScript and then modify it to manipulate the DOM. I also am considering the following ways to improve my program:
+My next project is to [translate this game into JavaScript](https://github.com/Faraja17/tic-tac-toe-in-js) and then modify it to manipulate the DOM. I also am considering the following ways to improve my program:
 
 - Randomize the first player.
 - Get rid of the loops within loops.
