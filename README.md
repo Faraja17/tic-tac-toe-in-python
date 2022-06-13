@@ -103,17 +103,73 @@ print(' ')
 
 5/11/22 - So far, I have successfully replicated Sweigart's game. I changed the look of the board, removing the lines and instead adding a top and a bottom border using `~~~~~`. I also added a welcome/directions section and modified the prompt text to be more natural and engaging. I added a print after 9 rounds: "It is a draw!' The next step for me to complete independently will be to add functions to determine and announce the winner and to end the game in the case of a winner.
 
+5/12/22 - Wow,this was a very educational project for me! For the first time, I was able to come up with my own clever logic that works! Here is how it went: In order to determine winners, I knew that I had to figure out a way to analize the game board for the instance of three in a row. This took A LOT of thinking away from the screen. I spent time talking my way through different scenarios and jotting ideas on notepaper. A key moment was when I noticed some patterns in the keys that might help. each row and column had a unique set of first letters. For example, the top row keys all had 't' for their first letter, and the right column keys all had 'r' for their second letter. I had by chance renamed all of the keys to just two letters in order to make input easier. Sweigart had named his keys more elaborately, e.g. top-L, mid-M, which I found to be tedious to input. I did not realize at the time how much my change would help later! 
+
+So, after noticing the pattern, I remembered learning in chapter 5 about being able create list-like values of a dictionary's keys, values, and items. I also remembered learning in JavaScript how to slice characters of a string through their indices. I went back and reread Chapter 5, and I did some searching for how to return the first letter of a string in Python. Then started thinking of a plan to create a function to make a list of the keys, loop through each to get the first letters, then see if there was an instance of Xs or Os three in a row. On my note paper, brainstormed the following functions and loops:
+
+```python
+def winner(turn, firstLetter):
+  for i in range of 3:
+    turn == board(value w/first letter)
+    
+def firstLetter(turn):
+  for i in range 3:
+    key starts with t and key starts with t's value == turn
+    i+=1
+```
+but I got stuck. I didn't want to write 50 lines of code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first letter to test for. I wrote out my plan and how to achieve it in words:
+
+```
+If turn is the value of 3 keys that start withthe same letter, print turn + ' wins!'
+Count how many turns are == to the value of keys beginning with the same letter.
+If any count == 3, turn wins, else, keep playing.
+```
+
+I read my plan over and tried to breakdown the steps part by part. Suddenly, it struck me! I had been confusing `turn` with `move`. `turn` was the X or O that the program would place into the correct key value, but `move` was the key itself, inputted by the player. This was the answer to determining which specific first and second letters to test for! Each time the player entered their move, the program could look at the the letters and find out if any other keys with the same letters had the value of `turn`. Since each row and each column share a unique first and last letter, if the program found 3 it would mean that the player had won. So that is how I came up with the following loop:
+
+```python
+firstLetterCount = 0
+secondLetterCount = 0
+    for k in theBoard.keys():
+        if (k[0] == move[0]) and (theBoard[k] == turn): 
+            firstLetterCount+=1       
+        if firstLetterCount == 3: 
+            winMessage()
+        else:
+            continue
+```
+To my sheer delight, my program WORKED! I tried combining the second letter value, but instead I wound up just making a separate for in loop for it. These two loops saved me from having to write six separate hard-coded if statements, one for each column and one for each row. It wasn't so bad only having to do that for each of the diagonals:
+
+```python
+if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
+        winMessage()
+
+if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
+        winMessage()
+```
+
+Finally, I needed to exit both the inner loop and the outer loop so that the game would end in case of a winner. I did a lot of research on the topic, but I still haven't been able to create a workable solution. For now, my son suggested using `exit()`, but he warned me that it is not ideal, especially if I want to add a prompt giving a choice of either playing again or quitting. He said that I should avoid using loops within loops.
+
 ### Built with
 
 - Python 3
 
 ### What I learned
 
+- the Dictionary Data Structure
+- Key, Value, and Item Methods
+- Review of String Indexing
 
 
 ### Continued development
 
+My next project is to translate this game into JavaScript and then modify it to manipulate the DOM. I also am considering the following ways to improve my program:
 
+- Randomize the first player.
+- Get rid of the loops within loops.
+- Ask player if they wish to continue playing or to quit.
+- Make the game human vs. computer.
+- Address when wrong input is entered.
 
 ### Useful resources
 
