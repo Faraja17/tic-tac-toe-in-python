@@ -1,6 +1,6 @@
 # Tic Tac Toe in Python
 
-Descripton: This is a modification and extension of the game presented as a practice problem in Chapter 5 of Automate the Boring Stuff with Python by Al Sweigart.
+Descripton: This is a modification and extension of the game presented as a practice problem in Chapter 5 of *Automate the Boring Stuff* with Python by Al Sweigart.
 
 ## Table of contents
 
