@@ -145,7 +145,7 @@ secondLetterCount = 0
         else:
             continue
 ```
-To my sheer delight, my program WORKED! I tried combining the second letter value, but instead I wound up just making a separate for in loop for it. These two loops saved me from having to write six separate hard-coded if statements, one for each column and one for each row. For such a simple game, this wouldn't have been a big deal, but if I were to add more rows, the number of separate hard-coded if statements would also increase. This way, no matter how many rows or columns are added, the same two function can be used. It wasn't so bad only having to hard-code each of the diagonals:
+To my sheer delight, my program WORKED! I tried combining the second letter value, but instead I wound up just making a separate for in loop for it. These two loops saved me from having to write six separate hard-coded if statements, one for each column and one for each row. For such a simple game, this wouldn't have been a big deal, but if I were to add more rows, the number of separate hard-coded if statements would also increase. This way, no matter how many rows or columns are added, the same function can be used with the minor adjustment of changing the `if firstLetterCount ===` value. It wasn't so bad only having to hard-code each of the diagonals:
 
 ```python
 if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
@@ -177,6 +177,7 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 - Ask player if they wish to continue playing or to quit.
 - Make the game human vs. computer.
 - Address when wrong input is entered.
+- Keep track of spots already filled.
 
 ### Useful resources
 
