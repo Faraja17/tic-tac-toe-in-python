@@ -179,6 +179,7 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 - Make the game human vs. computer.
 - Address when wrong input is entered.
 - Keep track of spots already filled.
+- Remove case sensitivity. 
 
 ### Useful resources
 
