@@ -9,7 +9,7 @@ print('Object of the game: To win, get three Xs or Os in a row, column, or diago
 print('Game play: 1. Decide who is X and who is O. 2. Take turns typing the row and column codes of your selected spot.')
 print('For example, the code for the top-left spot is tl, for the mid-middle spot it is mm, and for the lower-right spot it is lr.')
 
-# printed board option 2
+# printed board
 def printBoard(board):
     print(' ')
     print('~~~~~')
@@ -19,22 +19,36 @@ def printBoard(board):
     print('~~~~~')
     print(' ')
 
-# win announcement and game exit
-def winMessage():
-    printBoard(theBoard)
-    print(turn + ' wins!')
-    print(' ')
-    exit()
    
 # players enter moves
-turn = 'X'
-for i in range(9):
-    printBoard(theBoard)
-    print(turn + ', it is your turn. Select a spot.')
-    move = input()
-    theBoard[move] = turn
+def playerTurn():
 
-    # determinine and announce winner
+    turn = 'X'
+
+    for i in range(9):
+        printBoard(theBoard)
+
+        print(turn + ', it is your turn. Select a spot.')
+        
+        move = input()
+
+        if theBoard[move] == '-':
+            theBoard[move] = turn
+        else:
+            print("That space is already taken. Select an empty spot.")
+            continue
+
+        if turn == 'X':
+            turn = 'O'
+        else:
+            turn = 'X'
+            
+    winMessage()
+    drawMessage()
+
+# determinine and announce winner
+def winner():
+
     firstLetterCount = 0
     secondLetterCount = 0
     for k in theBoard.keys():
@@ -49,7 +63,7 @@ for i in range(9):
         if (k[1] == move[1]) and (theBoard[k] == turn):
             secondLetterCount+=1
         if secondLetterCount == 3:
-           winMessage()
+            winMessage()
         else:
             continue
     
@@ -59,11 +73,19 @@ for i in range(9):
     if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
         winMessage()
 
-    if turn == 'X':
-        turn = 'O'
-    else:
-        turn = 'X'
-    
-printBoard(theBoard)
-print('It is a draw!')
-print(' ')
+
+# win announcement and game exit
+def winMessage():
+    printBoard(theBoard)
+    print(turn + ' wins!')
+    print(' ')
+    exit()
+
+# draw announcement and game exit
+def drawMessage():   
+    printBoard(theBoard)
+    print('It is a draw!')
+    print(' ')
+    exit()
+
+playerTurn()
