@@ -1,3 +1,4 @@
+
 # Tic Tac Toe Grid
 theBoard = {'tl': '-', 'tm': '-', 'tr': '-',
             'ml': '-', 'mm': '-', 'mr': '-',
@@ -19,40 +20,60 @@ def printBoard(board):
     print('~~~~~')
     print(' ')
 
-   
+turn = 'X'
+
+
 # players enter moves
-def playerTurn():
+def playerTurn(move, turn):
 
-    turn = 'X'
+    i = 0
 
-    for i in range(9):
+    while i < 9:
         printBoard(theBoard)
-
+        print(i)
         print(turn + ', it is your turn. Select a spot.')
-        
         move = input()
+
+        # j = 0
+
+        # while True: 
+        #     try:
+        #         for j in range(9):
+        #             if move == keys[j]:
+        #                 break
+        #             else:    
+        #                 j += 1
+        #     except KeyError:
+        #         print("Invalid move. Try again.")
+        #         continue
+        #     else:
+        #         break  
+        
 
         if theBoard[move] == '-':
             theBoard[move] = turn
+            i += 1
+        
         else:
             print("That space is already taken. Select an empty spot.")
             continue
+             
 
         if turn == 'X':
             turn = 'O'
         else:
             turn = 'X'
             
-    winMessage()
     drawMessage()
 
 # determinine and announce winner
-def winner():
+def winner(move):
 
     firstLetterCount = 0
     secondLetterCount = 0
     for k in theBoard.keys():
         if (k[0] == move[0]) and (theBoard[k] == turn): 
+            print(k[0], move[0], theBoard[k], turn)
             firstLetterCount+=1       
         if firstLetterCount == 3: 
             winMessage()
@@ -61,6 +82,7 @@ def winner():
 
     for k in theBoard.keys():
         if (k[1] == move[1]) and (theBoard[k] == turn):
+            print(k[1], move[1], theBoard[k], turn)
             secondLetterCount+=1
         if secondLetterCount == 3:
             winMessage()
@@ -88,4 +110,4 @@ def drawMessage():
     print(' ')
     exit()
 
-playerTurn()
+playerTurn("move", turn)
