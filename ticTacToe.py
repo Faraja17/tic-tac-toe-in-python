@@ -32,7 +32,6 @@ def playerTurn(move, turn, theBoard):
 
     while i < 9: #changed this from for to while loop. this prevents counter from counting invalid moves
         printBoard(theBoard)
-        print(i)
         print(turn + ', it is your turn. Select a spot.')
         move = input()
 
@@ -52,8 +51,6 @@ def playerTurn(move, turn, theBoard):
         #This checks for row wins:
         for k in theBoard.keys():
             if (k[0] == move[0]) and (theBoard[k] == turn): #k[0] is the first letter of the key. move[0] is the first letter of the player's selection theBoard[k] is the key value. turn is the X or O.
-                print("same in row:")
-                print(k[0], move[0], theBoard[k], turn)
                 firstLetterCount+=1       
             if firstLetterCount == 3: #There is only one instance when the first letters of three spots are the same. That is in either row t, m, or l.
                 winMessage(turn)
@@ -62,9 +59,7 @@ def playerTurn(move, turn, theBoard):
         
         #This checks for column wins:
         for k in theBoard.keys():
-            if (k[1] == move[1]) and (theBoard[k] == turn):#k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O,
-                print("same in column:")
-                print(k[1], move[1], theBoard[k], turn)
+            if (k[1] == move[1]) and (theBoard[k] == turn):#k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
                 secondLetterCount+=1
             if secondLetterCount == 3: #There is only one instance when the second letters of three spots are the same. That is in either column l, m, or r.
                 winMessage(turn)
@@ -104,8 +99,7 @@ def drawMessage():
 
 #play again choice
 def playAgain():
-    print('Play again? y or n')
-    choice = input('')
+    choice = input('Play again? y or n')
     if choice == 'y':
         for key in theBoard:
             theBoard[key] = '-' # this resets the gameboard.
