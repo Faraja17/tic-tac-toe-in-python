@@ -7,10 +7,14 @@ theBoard = {'tl': '-', 'tm': '-', 'tr': '-',
 keys = ['tl', 'tm', 'tr', 'ml', 'mm', 'mr', 'll', 'lm', 'lr']
 
 # wecome message and directions
-print('Welcome to Tic Tac Toe!')
-print('Object of the game: To win, get three Xs or Os in a row, column, or diagonal.')
-print('Game play: 1. Decide who is X and who is O. 2. Take turns typing the row and column codes of your selected spot.')
-print('For example, the code for the top-left spot is tl, for the mid-middle spot it is mm, and for the lower-right spot it is lr.')
+print(' ')
+print('WELCOME TO TIC TAC TOE!')
+print(' ')
+print('OBJECT OF THE GAME: To win, get three Xs or Os in a row, column, or diagonal.')
+print(' ')
+print('GAME PLAY: First, decide who is X and who is O. Then, take turns typing the row and column code of your selected spot.')
+print(' ')
+print('FOR EXAMPLE: The code for the top-left spot is tl, for the mid-middle spot it is mm, and for the lower-right spot it is lr.')
 
 # printed board
 def printBoard(board):
@@ -32,7 +36,7 @@ def playerTurn(move, turn, theBoard):
 
     while i < 9: #changed this from for to while loop. this prevents counter from counting invalid moves
         printBoard(theBoard)
-        print(turn + ', it is your turn. Select a spot.')
+        print(turn + ", it's your turn. Select a spot.")
         move = input()
 
         if move in keys and theBoard[move] == '-':
@@ -40,7 +44,7 @@ def playerTurn(move, turn, theBoard):
             i += 1
             
         else:
-            print("Invalid move. Try again.")
+            print(" \nInvalid move. Try again, " + turn + ".")
             continue #this skips everthing below and goes back up to the beginning of the loop. player turn remains the same.
 
     # determinine and announce winner
@@ -93,19 +97,19 @@ def winMessage(turn):
 # draw announcement and game exit
 def drawMessage():   
     printBoard(theBoard)
-    print('It is a draw!')
+    print("It's a draw!")
     print(' ')
     playAgain()
 
 #play again choice
 def playAgain():
-    choice = input('Play again? y or n')
+    choice = input('Play again? y or n \n')
     if choice == 'y':
         for key in theBoard:
             theBoard[key] = '-' # this resets the gameboard.
         playerTurn("move", turn, theBoard) #this restarts the game
     else:
-        print('Thank you for playing!')
+        print(" \nThank you for playing!\n ")
         exit()
 
 playerTurn("move", turn, theBoard) #starts the game
