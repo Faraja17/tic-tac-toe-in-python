@@ -55,17 +55,17 @@ def playerTurn(move, turn, theBoard):
         for k in theBoard.keys():
             if (k[0] == move[0]) and (theBoard[k] == turn): # k[0] is the first letter of the key. move[0] is the first letter of the player's selection. theBoard[k] is the key value. turn is the X or O.
                 firstLetterCount+=1       
-            if firstLetterCount == 3: # There are only three instances when the first letters of three spots are the same, in either row t, m, or l. The game stops the first time it detects one of these instances.
-                winMessage(turn)
+            if firstLetterCount == 3: # There are only three instances when the first letters of three spots are the same, in either row t, m, or l.
+                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
             else:
                 continue  
         
         #This checks for column wins:
         for k in theBoard.keys():
-            if (k[1] == move[1]) and (theBoard[k] == turn):#k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
+            if (k[1] == move[1]) and (theBoard[k] == turn):# k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
                 secondLetterCount+=1
-            if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l. The game stops the first time it detects one of these instances.
-                winMessage(turn)
+            if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l. 
+                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
             else:
                 continue
         
@@ -82,9 +82,9 @@ def playerTurn(move, turn, theBoard):
         else:
             turn = 'X'
         
-        # Restarts game play if there is no winner.
+        # If there is no winner and i is still > 9, we return to the beginning of the loop.
             
-    drawMessage()
+    drawMessage() # if there is still no winner after nine valid moves, we exit the loop and the draw announcement function is activated. 
 
 # win announcement and game exit
 def winMessage(turn):
