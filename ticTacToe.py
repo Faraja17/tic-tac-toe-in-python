@@ -93,14 +93,25 @@ def winMessage(turn):
     printBoard(theBoard)
     print(turn + ' wins!')
     print(' ')
-    exit()
+    playAgain()
 
 # draw announcement and game exit
 def drawMessage():   
     printBoard(theBoard)
     print('It is a draw!')
     print(' ')
-    exit()
+    playAgain()
 
+#play again choice
+def playAgain():
+    print('Play again? y or n')
+    choice = input('')
+    if choice == 'y':
+        for key in theBoard:
+            theBoard[key] = '-' # this resets the gameboard.
+        playerTurn("move", turn, theBoard) #this restarts the gamen
+    else:
+        print('Thank you for playing!')
+        exit()
 
 playerTurn("move", turn, theBoard) #starts the game
