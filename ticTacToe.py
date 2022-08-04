@@ -116,6 +116,6 @@ def drawMessage():
     print('It is a draw!')
     print(' ')
     exit()
-    
+
 
 playerTurn("move", turn) #starts the game
