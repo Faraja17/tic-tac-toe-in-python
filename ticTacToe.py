@@ -28,16 +28,19 @@ def printBoard(board):
 
 turn = 'X'
 
-# players enter moves
+# game play
 def playerTurn(move, turn, theBoard):
 
     i = 0
 
     while i < 9: #changed this from for to while loop. this prevents counter from counting invalid moves
+       
+        #current player enters move
         printBoard(theBoard)
         print(turn + ", it's your turn. Select a spot.")
         move = input()
 
+        # imput validation
         if move in keys and theBoard[move] == '-': # the if. . .in statement checks whether or not the player's move matches any of the keys listed in the array named keys. combined this with checking that the selected spot does not already contain an X or O, but still contains a hyphen.
             theBoard[move] = turn
             i += 1 # only increments after a valid move so that in case of a draw, we wont reach nine plays before the board is filled.
@@ -46,8 +49,7 @@ def playerTurn(move, turn, theBoard):
             print(" \nInvalid move. Try again, " + turn + ".")
             continue #this skips everthing below and goes back up to the beginning of the loop. i remains the same value after an invalid move. player turn remains the same.
 
-    # determinine and announce winner
-
+        # determinine and announce winner
         firstLetterCount = 0
         secondLetterCount = 0
         
