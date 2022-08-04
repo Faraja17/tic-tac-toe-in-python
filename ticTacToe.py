@@ -59,45 +59,52 @@ def playerTurn(move, turn):
             continue
              
 
+    #     if turn == 'X':
+    #         turn = 'O'
+    #     else:
+    #         turn = 'X'
+            
+    # drawMessage()
+
+    # determinine and announce winner
+
+        firstLetterCount = 0
+        secondLetterCount = 0
+        for k in theBoard.keys():
+            if (k[0] == move[0]) and (theBoard[k] == turn): 
+                print(k[0], move[0], theBoard[k], turn)
+                firstLetterCount+=1       
+            if firstLetterCount == 3: 
+                winMessage(turn)
+            else:
+                continue  
+
+        for k in theBoard.keys():
+            if (k[1] == move[1]) and (theBoard[k] == turn):
+                print(k[1], move[1], theBoard[k], turn)
+                secondLetterCount+=1
+            if secondLetterCount == 3:
+                winMessage(turn)
+            else:
+                continue
+        
+        if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
+            winMessage(turn)
+
+        if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
+            winMessage(turn)
+
         if turn == 'X':
             turn = 'O'
         else:
             turn = 'X'
+        
+        playerTurn("move", turn) # takes back into game play if there is no winner.
             
     drawMessage()
 
-# determinine and announce winner
-def winner(move):
-
-    firstLetterCount = 0
-    secondLetterCount = 0
-    for k in theBoard.keys():
-        if (k[0] == move[0]) and (theBoard[k] == turn): 
-            print(k[0], move[0], theBoard[k], turn)
-            firstLetterCount+=1       
-        if firstLetterCount == 3: 
-            winMessage()
-        else:
-            continue  
-
-    for k in theBoard.keys():
-        if (k[1] == move[1]) and (theBoard[k] == turn):
-            print(k[1], move[1], theBoard[k], turn)
-            secondLetterCount+=1
-        if secondLetterCount == 3:
-            winMessage()
-        else:
-            continue
-    
-    if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
-        winMessage()
-
-    if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
-        winMessage()
-
-
 # win announcement and game exit
-def winMessage():
+def winMessage(turn):
     printBoard(theBoard)
     print(turn + ' wins!')
     print(' ')
@@ -109,5 +116,6 @@ def drawMessage():
     print('It is a draw!')
     print(' ')
     exit()
+    
 
-playerTurn("move", turn)
+playerTurn("move", turn) #starts the game
