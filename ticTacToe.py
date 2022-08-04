@@ -89,14 +89,14 @@ def playerTurn(move, turn, theBoard):
 # win announcement and game exit
 def winMessage(turn):
     printBoard(theBoard)
-    print(turn + ' wins!')
+    print('*** ' + turn + ' wins! ***')
     print(' ')
     playAgain()
 
 # draw announcement and game exit
 def drawMessage():   
     printBoard(theBoard)
-    print("It's a draw!")
+    print("*** It's a draw! ***")
     print(' ')
     playAgain()
 
