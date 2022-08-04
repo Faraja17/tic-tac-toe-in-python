@@ -104,7 +104,7 @@ def playAgain():
             theBoard[key] = '-' # this resets the gameboard.
         playerTurn("move", turn, theBoard) #this restarts the game
     else:
-        print(" \nThank you for playing!\n ")
+        print(" \nThank you for playing Tic Tac Toe!\n ")
         exit()
 
 playerTurn("move", turn, theBoard) #starts the game
