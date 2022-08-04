@@ -75,8 +75,7 @@ def playerTurn(move, turn, theBoard):
             print(" \nInvalid move. Try again, " + turn + ".")
             continue #this skips everthing below and goes back up to the beginning of the loop. i remains the same value after an invalid move. player turn remains the same.
 
-    # determinine and announce winner
-
+        # determinine and announce winner
         firstLetterCount = 0
         secondLetterCount = 0
 
