@@ -1,6 +1,6 @@
 # Tic Tac Toe in Python
 
-Descripton: This is a modification and extension of the partial game presented as a practice problem in Chapter 5 of [*Automate the Boring Stuff with Python* by Al Sweigart.](https://automatetheboringstuff.com/2e/chapter5/)
+Descripton: This is a modification and extension of the partial game presented as a practice problem in Chapter 5 of [_Automate the Boring Stuff with Python_ by Al Sweigart.](https://automatetheboringstuff.com/2e/chapter5/)
 
 ## Table of contents
 
@@ -17,10 +17,9 @@ Descripton: This is a modification and extension of the partial game presented a
 
 ## Overview
 
-I selected Sweigart's model to begin with because I like his logic and his clean concise code. He guided me through setting up a grid by creating a dictionary, setting up the printed board through a function, and allowing players to enter moves using a for in loop that iterates 9 times, regardless of a winner. 
+I selected Sweigart's model to begin with because I like his logic and his clean concise code. He guided me through setting up a grid by creating a dictionary, setting up the printed board through a function, and allowing players to enter moves using a for in loop that iterates 9 times, regardless of a winner.
 
 My job was to write functions to determine and announce the winner and to end the game in the case of a winner. I am also interested in adding a human vs. computer option and eventually [translating this game into JavaScript](https://github.com/Faraja17/tic-tac-toe-in-js) so that I can connect it to HTML and CSS to make it interactive.
-
 
 ### My Code
 
@@ -68,7 +67,7 @@ def playerTurn(move, turn, theBoard):
         if move in keys and theBoard[move] == '-':
             theBoard[move] = turn
             i += 1
-            
+
         else:
             print(" \nInvalid move. Try again, " + turn + ".")
             continue #this skips everthing below and goes back up to the beginning of the loop. player turn remains the same.
@@ -77,26 +76,26 @@ def playerTurn(move, turn, theBoard):
 
         firstLetterCount = 0
         secondLetterCount = 0
-        
+
         #This checks for row wins:
         for k in theBoard.keys():
             if (k[0] == move[0]) and (theBoard[k] == turn): # k[0] is the first letter of the key. move[0] is the first letter of the player's selection. theBoard[k] is the key value. turn is the X or O.
-                firstLetterCount+=1       
+                firstLetterCount+=1
             if firstLetterCount == 3: # There are only three instances when the first letters of three spots are the same, in either row t, m, or l.
-                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates. 
-        
+                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
+
         #This checks for column wins:
         for k in theBoard.keys():
             if (k[1] == move[1]) and (theBoard[k] == turn):# k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
                 secondLetterCount+=1
-            if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l. 
+            if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l.
                 winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
-        
+
         #These check for diagonal wins:
         if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
             winMessage(turn)
 
-        if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
+        if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn):
             winMessage(turn)
 
         #This swaps the player after each turn:
@@ -104,10 +103,10 @@ def playerTurn(move, turn, theBoard):
             turn = 'O'
         else:
             turn = 'X'
-        
+
         # If there is no winner and i is still > 9, we return to the beginning of the loop.
-            
-    drawMessage() # if there is still no winner after nine valid moves, we exit the loop and the draw announcement function is activated. 
+
+    drawMessage() # if there is still no winner after nine valid moves, we exit the loop and the draw announcement function is activated.
 
 # win announcement and game exit
 def winMessage(turn):
@@ -117,7 +116,7 @@ def winMessage(turn):
     playAgain()
 
 # draw announcement and game exit
-def drawMessage():   
+def drawMessage():
     printBoard(theBoard)
     print("*** It's a draw! ***")
     print(' ')
@@ -131,7 +130,7 @@ def playAgain():
             theBoard[key] = '-' # this resets the gameboard.
         playerTurn("move", turn, theBoard) #this restarts the game
     else:
-        print(" \nThank you for playing!\n ")
+        print(" \nThank you for playing Tic Tac Toe!\n ")
         exit()
 
 playerTurn("move", turn, theBoard) #starts the game
@@ -145,15 +144,15 @@ playerTurn("move", turn, theBoard) #starts the game
 
 ## My process
 
-5/11/22 
+5/11/22
 
 So far, I have successfully replicated Sweigart's game. I changed the look of the board, removing the lines and instead adding a top and a bottom border using `~~~~~`. I also added a welcome/directions section and modified the prompt text to be more natural and engaging. I condensed the names of the keys to two characters each. I added a print function after 9 rounds: "It is a draw!' The next step for me to complete independently will be to add functions to determine and announce the winner and to end the game in the case of a winner.
 
 5/12/22
 
-Wow, this was a very educational project for me! For the first time, I was able to come up with my own clever logic that works! Here is how it went: In order to determine winners, I knew that I had to figure out a way to analyze the game board for the instance of three in a row or column. This took A LOT of thinking away from the screen. I spent time talking my way through different scenarios and jotting ideas on notepaper. 
+Wow, this was a very educational project for me! For the first time, I was able to come up with my own clever logic that works! Here is how it went: In order to determine winners, I knew that I had to figure out a way to analyze the game board for the instance of three in a row or column. This took A LOT of thinking away from the screen. I spent time talking my way through different scenarios and jotting ideas on notepaper.
 
-A key moment was when I noticed some patterns in the keys that might help. Each row and column had a unique set of first letters. For example, the top row keys all had 't' for their first letter, and the right column keys all had 'r' for their second letter. I had by chance renamed all of the keys to just two letters in order to make input easier. Sweigart had named his keys more elaborately, e.g. top-L, mid-M, which I found to be tedious to input. I did not realize at the time how much my change would help later! 
+A key moment was when I noticed some patterns in the keys that might help. Each row and column had a unique set of first letters. For example, the top row keys all had 't' for their first letter, and the right column keys all had 'r' for their second letter. I had by chance renamed all of the keys to just two letters in order to make input easier. Sweigart had named his keys more elaborately, e.g. top-L, mid-M, which I found to be tedious to input. I did not realize at the time how much my change would help later!
 
 So, after noticing the pattern, I remembered learning in chapter 5 about being able create list-like values of a dictionary's keys, values, and items. I also remembered learning in JavaScript how to slice characters of a string through their indices. I went back and reread Chapter 5, and I did some searching for how to return the first letter of a string in Python. Then I started thinking of a plan to create a function to make a list of the keys, loop through each to get the first/second letters, then see if there was an instance of Xs or Os, three in a row or a column. On my note paper, I brainstormed the following functions and loops:
 
@@ -161,12 +160,13 @@ So, after noticing the pattern, I remembered learning in chapter 5 about being a
 def winner(turn, firstLetter):
   for i in range of 3:
     turn == board(value w/first letter)
-    
+
 def firstLetter(turn):
   for i in range 3:
     key starts with t and key starts with t's value == turn
     i+=1
 ```
+
 But I got stuck. I didn't want to write multiple lines of repetitive code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to have flexibility incase I ever needed to add more rows and columns. And I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first/second letter to test for. I wrote out my plan and how to achieve it in words:
 
 ```
@@ -181,20 +181,21 @@ I read my plan over and broke down the steps part by part. Suddenly, it struck m
 firstLetterCount = 0
 secondLetterCount = 0
     for k in theBoard.keys():
-        if (k[0] == move[0]) and (theBoard[k] == turn): 
-            firstLetterCount+=1       
-        if firstLetterCount == 3: 
+        if (k[0] == move[0]) and (theBoard[k] == turn):
+            firstLetterCount+=1
+        if firstLetterCount == 3:
             winMessage()
         else:
             continue
 ```
+
 To my sheer delight, my program WORKED! I tried combining the second letter value, but instead I wound up just making a separate for in loop for it. These two loops saved me from having to write six separate hard-coded if statements, one for each column and one for each row. For such a simple game, this wouldn't have been a big deal, but if I were to add more rows, the number of separate hard-coded if statements would also increase. This way, no matter how many rows or columns are added, the same function can be used with the minor adjustment of changing the `if firstLetterCount ===` value. It wasn't so bad only having to hard-code each of the diagonals:
 
 ```python
 if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
         winMessage()
 
-if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
+if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn):
         winMessage()
 ```
 
@@ -210,7 +211,6 @@ Finally, I needed to exit both the inner loop and the outer loop so that the gam
 - Key, Value, and Item Methods
 - Review of String Indexing
 
-
 ### Continued development
 
 My next project is to [translate this game into JavaScript](https://github.com/Faraja17/tic-tac-toe-in-js) and then modify it to manipulate the DOM. I also am considering the following ways to improve my program:
@@ -221,21 +221,21 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 - Make the game human vs. computer.
 - Address when wrong input is entered.
 - Keep track of spots already filled.
-- Remove case sensitivity. 
+- Remove case sensitivity.
 
 ### Useful resources
 
-- [*Automate the Boring Stuff With Python*](https://automatetheboringstuff.com/2e/chapter5/) - by Al Sweigart, Chapter 5
-- [*The Classic Tic Tac Toe Game in Python 3*](https://medium.com/byte-tales/the-classic-tic-tac-toe-game-in-python-3-1427c68b8874) - by James Shah, blog post
+- [_Automate the Boring Stuff With Python_](https://automatetheboringstuff.com/2e/chapter5/) - by Al Sweigart, Chapter 5
+- [_The Classic Tic Tac Toe Game in Python 3_](https://medium.com/byte-tales/the-classic-tic-tac-toe-game-in-python-3-1427c68b8874) - by James Shah, blog post
 
 ## Author
 
 Faraja Thompson
 
 - [My Personal Website](https://faraja17.github.io/my-website/)
-- [My Blog: teach=>tech]([https://faraja17.github.io/](https://teach2tech.hashnode.dev/))
+- [My Blog: teach=>tech](<[https://faraja17.github.io/](https://teach2tech.hashnode.dev/)>)
 - [Faraja Thompson, M.Ed. on LinkedIn](https://www.linkedin.com/in/faraja-thompson-m-ed-70885b8/)
 
 ## Acknowledgments
 
-I'd like to acknowledge my son and mentor [DeForestt Thompson](https://github.com/DeForestt).  His steadfast support and encouragement keep me motivated!  Thanks for forcing me to use the command-line, Son <3 <3 <3.
+I'd like to acknowledge my son and mentor [DeForestt Thompson](https://github.com/DeForestt). His steadfast support and encouragement keep me motivated! Thanks for forcing me to use the command-line, Son <3 <3 <3.
