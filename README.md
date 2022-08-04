@@ -168,7 +168,7 @@ def firstLetter(turn):
     key starts with t and key starts with t's value == turn
     i+=1
 ```
-But I got stuck. I didn't want to write multiple lines of repetitive code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to have flexibility incase I ever needed to add more rows and columnts. And I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first/second letter to test for. I wrote out my plan and how to achieve it in words:
+But I got stuck. I didn't want to write multiple lines of repetitive code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to have flexibility incase I ever needed to add more rows and columns. And I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first/second letter to test for. I wrote out my plan and how to achieve it in words:
 
 ```
 If turn is the value of 3 keys that start withthe same letter, print turn + ' wins!'
