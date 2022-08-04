@@ -103,7 +103,7 @@ def playAgain():
     if choice == 'y':
         for key in theBoard:
             theBoard[key] = '-' # this resets the gameboard.
-        playerTurn("move", turn, theBoard) #this restarts the gamen
+        playerTurn("move", turn, theBoard) #this restarts the game
     else:
         print('Thank you for playing!')
         exit()
