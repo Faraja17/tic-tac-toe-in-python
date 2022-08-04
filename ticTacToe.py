@@ -38,13 +38,13 @@ def playerTurn(move, turn, theBoard):
         print(turn + ", it's your turn. Select a spot.")
         move = input()
 
-        if move in keys and theBoard[move] == '-':
+        if move in keys and theBoard[move] == '-': # the if. . .in statement checks whether or not the player's move matches any of the keys listed in the array named keys. combined this with checking that the selected spot does not already contain an X or O, but still contains a hyphen.
             theBoard[move] = turn
-            i += 1
-            
+            i += 1 # only increments after a valid move so that in case of a draw, we wont reach nine plays before the board is filled.
+
         else:
             print(" \nInvalid move. Try again, " + turn + ".")
-            continue #this skips everthing below and goes back up to the beginning of the loop. player turn remains the same.
+            continue #this skips everthing below and goes back up to the beginning of the loop. i remains the same value after an invalid move. player turn remains the same.
 
     # determinine and announce winner
 
