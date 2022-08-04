@@ -234,7 +234,7 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 Faraja Thompson
 
 - [My Personal Website](https://faraja17.github.io/my-website/)
-- [My Blog: Teacher to Techie](https://faraja17.github.io/)
+- [My Blog: teach=>tech]([https://faraja17.github.io/](https://teach2tech.hashnode.dev/))
 - [Faraja Thompson, M.Ed. on LinkedIn](https://www.linkedin.com/in/faraja-thompson-m-ed-70885b8/)
 
 ## Acknowledgments
