@@ -144,11 +144,11 @@ playerTurn("move", turn, theBoard) #starts the game
 
 ## My process
 
-5/11/22
+6/11/22
 
 So far, I have successfully replicated Sweigart's game. I changed the look of the board, removing the lines and instead adding a top and a bottom border using `~~~~~`. I also added a welcome/directions section and modified the prompt text to be more natural and engaging. I condensed the names of the keys to two characters each. I added a print function after 9 rounds: "It is a draw!' The next step for me to complete independently will be to add functions to determine and announce the winner and to end the game in the case of a winner.
 
-5/12/22
+6/12/22
 
 Wow, this was a very educational project for me! For the first time, I was able to come up with my own clever logic that works! Here is how it went: In order to determine winners, I knew that I had to figure out a way to analyze the game board for the instance of three in a row or column. This took A LOT of thinking away from the screen. I spent time talking my way through different scenarios and jotting ideas on notepaper.
 
