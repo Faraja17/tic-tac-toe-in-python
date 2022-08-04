@@ -25,10 +25,13 @@ My job was to write functions to determine and announce the winner and to end th
 ### My Code
 
 ```python
+
 # Tic Tac Toe Grid
 theBoard = {'tl': '-', 'tm': '-', 'tr': '-',
             'ml': '-', 'mm': '-', 'mr': '-',
             'll': '-', 'lm': '-', 'lr': '-'}
+
+keys = ['tl', 'tm', 'tr', 'ml', 'mm', 'mr', 'll', 'lm', 'lr']
 
 # wecome message and directions
 print('Welcome to Tic Tac Toe!')
@@ -36,7 +39,7 @@ print('Object of the game: To win, get three Xs or Os in a row, column, or diago
 print('Game play: 1. Decide who is X and who is O. 2. Take turns typing the row and column codes of your selected spot.')
 print('For example, the code for the top-left spot is tl, for the mid-middle spot it is mm, and for the lower-right spot it is lr.')
 
-# printed board option 2
+# printed board
 def printBoard(board):
     print(' ')
     print('~~~~~')
@@ -46,54 +49,94 @@ def printBoard(board):
     print('~~~~~')
     print(' ')
 
+turn = 'X'
+
+
+# players enter moves
+def playerTurn(move, turn, theBoard):
+
+    i = 0
+
+    while i < 9: #changed this from for to while loop. this prevents counter from counting invalid moves
+        printBoard(theBoard)
+        print(turn + ', it is your turn. Select a spot.')
+        move = input()
+
+        if move in keys and theBoard[move] == '-':
+            theBoard[move] = turn
+            i += 1
+            
+        else:
+            print("Invalid move. Try again.")
+            continue #this skips everthing below and goes back up to the beginning of the loop. player turn remains the same.
+
+    # determinine and announce winner
+
+        firstLetterCount = 0
+        secondLetterCount = 0
+        
+        #This checks for row wins:
+        for k in theBoard.keys():
+            if (k[0] == move[0]) and (theBoard[k] == turn): #k[0] is the first letter of the key. move[0] is the first letter of the player's selection theBoard[k] is the key value. turn is the X or O.
+                firstLetterCount+=1       
+            if firstLetterCount == 3: #There is only one instance when the first letters of three spots are the same. That is in either row t, m, or l.
+                winMessage(turn)
+            else:
+                continue  
+        
+        #This checks for column wins:
+        for k in theBoard.keys():
+            if (k[1] == move[1]) and (theBoard[k] == turn):#k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
+                secondLetterCount+=1
+            if secondLetterCount == 3: #There is only one instance when the second letters of three spots are the same. That is in either column l, m, or r.
+                winMessage(turn)
+            else:
+                continue
+        
+        #These check for diagonal wins:
+        if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
+            winMessage(turn)
+
+        if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
+            winMessage(turn)
+
+        #This swaps the player after each turn:
+        if turn == 'X':
+            turn = 'O'
+        else:
+            turn = 'X'
+        
+        # Restarts game play if there is no winner.
+            
+    drawMessage()
+
 # win announcement and game exit
-def winMessage():
+def winMessage(turn):
     printBoard(theBoard)
     print(turn + ' wins!')
     print(' ')
-    exit()
-   
-# players enter moves
-turn = 'X'
-for i in range(9):
+    playAgain()
+
+# draw announcement and game exit
+def drawMessage():   
     printBoard(theBoard)
-    print(turn + ', it is your turn. Select a spot.')
-    move = input()
-    theBoard[move] = turn
+    print('It is a draw!')
+    print(' ')
+    playAgain()
 
-    # determinine and announce winner
-    firstLetterCount = 0
-    secondLetterCount = 0
-    for k in theBoard.keys():
-        if (k[0] == move[0]) and (theBoard[k] == turn): 
-            firstLetterCount+=1       
-        if firstLetterCount == 3: 
-            winMessage()
-        else:
-            continue  
-
-    for k in theBoard.keys():
-        if (k[1] == move[1]) and (theBoard[k] == turn):
-            secondLetterCount+=1
-        if secondLetterCount == 3:
-           winMessage()
-        else:
-            continue
-    
-    if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
-        winMessage()
-
-    if (theBoard['tr'] == turn) and (theBoard['mm'] == turn) and (theBoard['ll'] == turn): 
-        winMessage()
-
-    if turn == 'X':
-        turn = 'O'
+#play again choice
+def playAgain():
+    choice = input('Play again? y or n')
+    if choice == 'y':
+        for key in theBoard:
+            theBoard[key] = '-' # this resets the gameboard.
+        playerTurn("move", turn, theBoard) #this restarts the game
     else:
-        turn = 'X'
-    
-printBoard(theBoard)
-print('It is a draw!')
-print(' ')    
+        print('Thank you for playing!')
+        exit()
+
+playerTurn("move", turn, theBoard) #starts the game
+
 ```
 
 ### Links
@@ -125,7 +168,7 @@ def firstLetter(turn):
     key starts with t and key starts with t's value == turn
     i+=1
 ```
-But I got stuck. I didn't want to write multiple lines of repetitive code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to have flexibility incase I ever needed to add more rows and columnts. And I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first/second letter to test for. I wrote out my plan and how to achieve it in words:
+But I got stuck. I didn't want to write multiple lines of repetitive code to cover each possible first and second letter. As I have been learning lately, the whole point of coding is to make life easier. I also did not want to hard code the first and second letter variables. I wanted my code to have flexibility incase I ever needed to add more rows and columns. And I wanted my code to be more sophisticated and on par with what I have been learning. So I tried to think of a creative way to determine which specific first/second letter to test for. I wrote out my plan and how to achieve it in words:
 
 ```
 If turn is the value of 3 keys that start withthe same letter, print turn + ' wins!'
@@ -183,7 +226,8 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 
 ### Useful resources
 
-- [*Automate the Boring Stuff with Python*](https://automatetheboringstuff.com/2e/chapter5/) - by Al Sweigart, Chapter 5
+- [*Automate the Boring Stuff with Python* - ch. 5 of book](https://automatetheboringstuff.com/2e/chapter5/) - by Al Sweigart, Chapter 5
+- [*The Classic Tic Tac Toe game in Python* - blog post](https://medium.com/byte-tales/the-classic-tic-tac-toe-game-in-python-3-1427c68b8874)
 
 ## Author
 
