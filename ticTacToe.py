@@ -8,13 +8,13 @@ keys = ['tl', 'tm', 'tr', 'ml', 'mm', 'mr', 'll', 'lm', 'lr']
 
 # wecome message and directions
 print(' ')
-print('WELCOME TO TIC TAC TOE!')
+print('WELCOME TO TIC TAC TOE! (for two players)')
 print(' ')
-print('OBJECT OF THE GAME: To win, get three Xs or Os in a row, column, or diagonal.')
+print('TO WIN: Get three Xs or Os in a row, column, or diagonal.')
 print(' ')
-print('GAME PLAY: First, decide who is X and who is O. Then, take turns typing the row and column code of your selected spot.')
+print('GAME PLAY: Take turns typing the code of your selected spot.')
 print(' ')
-print('FOR EXAMPLE: The code for the top-left spot is tl, for the mid-middle spot it is mm, and for the lower-right spot it is lr.')
+print('CODES: \ntl tm tr\nml mm mr\nll lm lr')
 
 # printed board
 def printBoard(board):
@@ -27,7 +27,6 @@ def printBoard(board):
     print(' ')
 
 turn = 'X'
-
 
 # players enter moves
 def playerTurn(move, turn, theBoard):
@@ -54,9 +53,9 @@ def playerTurn(move, turn, theBoard):
         
         #This checks for row wins:
         for k in theBoard.keys():
-            if (k[0] == move[0]) and (theBoard[k] == turn): #k[0] is the first letter of the key. move[0] is the first letter of the player's selection theBoard[k] is the key value. turn is the X or O.
+            if (k[0] == move[0]) and (theBoard[k] == turn): # k[0] is the first letter of the key. move[0] is the first letter of the player's selection. theBoard[k] is the key value. turn is the X or O.
                 firstLetterCount+=1       
-            if firstLetterCount == 3: #There is only one instance when the first letters of three spots are the same. That is in either row t, m, or l.
+            if firstLetterCount == 3: # There are only three instances when the first letters of three spots are the same, in either row t, m, or l. The game stops the first time it detects one of these instances.
                 winMessage(turn)
             else:
                 continue  
@@ -65,7 +64,7 @@ def playerTurn(move, turn, theBoard):
         for k in theBoard.keys():
             if (k[1] == move[1]) and (theBoard[k] == turn):#k[1] is the second letter of the key. move[1] is the second letter of the player's selection theBoard[k] is the key value. turn is the X or O.
                 secondLetterCount+=1
-            if secondLetterCount == 3: #There is only one instance when the second letters of three spots are the same. That is in either column l, m, or r.
+            if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l. The game stops the first time it detects one of these instances.
                 winMessage(turn)
             else:
                 continue
