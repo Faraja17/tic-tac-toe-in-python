@@ -82,14 +82,14 @@ def playerTurn(move, turn, theBoard):
             
     drawMessage() # if there is still no winner after nine valid moves, we exit the loop and the draw announcement function is activated. 
 
-# win announcement and game exit
+# win announcement and play again choice
 def winMessage(turn):
     printBoard(theBoard)
     print('*** ' + turn + ' wins! ***')
     print(' ')
     playAgain()
 
-# draw announcement and game exit
+# draw announcement and play again choice
 def drawMessage():   
     printBoard(theBoard)
     print("*** It's a draw! ***")
