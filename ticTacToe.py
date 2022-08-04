@@ -56,9 +56,7 @@ def playerTurn(move, turn, theBoard):
             if (k[0] == move[0]) and (theBoard[k] == turn): # k[0] is the first letter of the key. move[0] is the first letter of the player's selection. theBoard[k] is the key value. turn is the X or O.
                 firstLetterCount+=1       
             if firstLetterCount == 3: # There are only three instances when the first letters of three spots are the same, in either row t, m, or l.
-                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
-            else:
-                continue  
+                winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates. 
         
         #This checks for column wins:
         for k in theBoard.keys():
@@ -66,8 +64,6 @@ def playerTurn(move, turn, theBoard):
                 secondLetterCount+=1
             if secondLetterCount == 3: # There are only three instances when the second letters of three spots are the same, in either column r, m, or l. 
                 winMessage(turn) # The game stops the first time it detects one of the above instances, and the win announcement function activates.
-            else:
-                continue
         
         #These check for diagonal wins:
         if (theBoard['tl'] == turn) and (theBoard['mm'] == turn) and (theBoard['lr'] == turn):
