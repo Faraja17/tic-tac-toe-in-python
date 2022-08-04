@@ -227,7 +227,7 @@ My next project is to [translate this game into JavaScript](https://github.com/F
 ### Useful resources
 
 - [*Automate the Boring Stuff with Python*](https://automatetheboringstuff.com/2e/chapter5/) - by Al Sweigart, Chapter 5
-- [*The Classic Tic Tac Toe game in Python*](https://medium.com/byte-tales/the-classic-tic-tac-toe-game-in-python-3-1427c68b8874) - blog post by James Shah
+- [*The Classic Tic Tac Toe game in Python*](https://medium.com/byte-tales/the-classic-tic-tac-toe-game-in-python-3-1427c68b8874) - by James Shah, blog post
 
 ## Author
 
